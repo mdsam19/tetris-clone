@@ -1,0 +1,25 @@
+.stats {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+.box {
+  display: flex;
+  height: 8dvh;
+  min-width: 12dvh;
+  width: auto;
+  background-color: black;
+  color: white;
+  font-size: 0.9rem;
+  border: 3px solid white;
+  border-radius: 2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.value {
+  font-size: 1.1rem;
+}

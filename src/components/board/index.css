@@ -1,0 +1,7 @@
+.board {
+  display: grid;
+  background-color: black;
+  border: 3px solid white;
+  height: 70dvh;
+  width: 35dvh;
+}

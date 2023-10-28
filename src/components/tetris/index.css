@@ -1,0 +1,9 @@
+.tetris {
+  background-color: steelblue;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
