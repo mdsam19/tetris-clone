@@ -39,7 +39,8 @@ const boardHelper = ({
     for (let x = 0; x < shape[0].length; x++) {
       if (operation === "color") {
         if (shape[y][x]) {
-          newboard[y + posY][x + posX][operation] = operationValue;
+          if (y + posY >= 0)
+            newboard[y + posY][x + posX][operation] = operationValue;
         }
       }
       if (operation === "occupied") {
