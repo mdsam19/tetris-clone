@@ -171,6 +171,7 @@ export const attemptMove = ({
   setUpComingPlayer,
   setGameOver,
   setDropTime,
+  boardpx,
 }: {
   timeRef: React.MutableRefObject<number>;
   currentPlayer: playerType;
@@ -185,10 +186,14 @@ export const attemptMove = ({
   upComingPlayer: playerType;
   setGameOver: React.Dispatch<React.SetStateAction<boolean>>;
   setDropTime: React.Dispatch<React.SetStateAction<number | null>>;
+  boardpx: { x: number; y: number };
 }) => {
   const difX = posX - touchPositionRef.current.x;
   const difY = posY - touchPositionRef.current.y;
-  if (Math.abs(difX) >= 20) {
+  const dy = boardpx.y / board.length;
+  const dx = boardpx.x / board[0].length;
+  console.log(boardpx);
+  if (Math.abs(difX) >= dx) {
     timeRef.current = 0;
     touchPositionRef.current.x = posX;
     touchPositionRef.current.y = posY;
@@ -212,7 +217,7 @@ export const attemptMove = ({
       newPlayer.position.x += inc;
       return newPlayer;
     });
-  } else if (difY >= 15) {
+  } else if (difY >= dy) {
     timeRef.current = 0;
     touchPositionRef.current.x = posX;
     touchPositionRef.current.y = posY;

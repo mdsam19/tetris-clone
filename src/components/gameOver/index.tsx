@@ -46,7 +46,7 @@ const GameOver = ({
   const hiScore = localStorage.getItem("hiScore");
   return (
     <div className="gameOver">
-      <div>GameOver</div>
+      <div className="gametitle">GameOver</div>
       <div className="scorebox">
         <div className="score">
           <div>Score</div>

@@ -10,7 +10,7 @@
   width: auto;
   background-color: black;
   color: white;
-  font-size: 0.9rem;
+  font-size: 100%;
   border: 3px solid white;
   border-radius: 2px;
   flex-direction: column;
@@ -21,5 +21,5 @@
   padding-right: 3px;
 }
 .value {
-  font-size: 1.1rem;
+  font-size: 100%;
 }

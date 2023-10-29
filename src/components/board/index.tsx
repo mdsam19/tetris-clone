@@ -16,6 +16,7 @@ const Board = ({
   setDropTime,
   gameOver,
 }: boardComponentType) => {
+  const boardpx = useRef({ x: 0, y: 0 });
   useEffect(() => {
     if (!localStorage.getItem("hiScore")) localStorage.setItem("hiScore", "0");
     const prevent = (e: TouchEvent) => {
@@ -25,6 +26,8 @@ const Board = ({
     boardDiv?.addEventListener("touchmove", prevent, {
       passive: false,
     });
+    boardpx.current.x = boardDiv!.clientWidth;
+    boardpx.current.y = boardDiv!.clientHeight;
     return () => boardDiv?.removeEventListener("touchmove", prevent);
   }, []);
 
@@ -62,6 +65,7 @@ const Board = ({
         upComingPlayer,
         setGameOver,
         setDropTime,
+        boardpx: boardpx.current,
       });
     }
   };
