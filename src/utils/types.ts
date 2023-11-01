@@ -19,6 +19,7 @@ export interface playerType {
     y: number;
   };
   collided: boolean;
+  droppingFast: boolean;
 }
 
 export interface statsType {

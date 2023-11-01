@@ -137,5 +137,6 @@ export const randomTetromino = () => {
       y: 0,
     },
     collided: false,
+    droppingFast: false,
   };
 };
