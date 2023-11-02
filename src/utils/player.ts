@@ -92,12 +92,13 @@ export const dropPlayer = ({
               }
             }
           }
+          setUpComingPlayer(() => {
+            const player = randomTetromino();
+            setInitialPreviewBoardPlayerPosition(player);
+            return player;
+          });
+
           return nextplayer;
-        });
-        setUpComingPlayer(() => {
-          const player = randomTetromino();
-          setInitialPreviewBoardPlayerPosition(player);
-          return player;
         });
         return;
       }

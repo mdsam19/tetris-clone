@@ -39,7 +39,7 @@ const boardHelper = ({
     for (let x = 0; x < shape[0].length; x++) {
       if (operation === "color") {
         if (shape[y][x]) {
-          if (y + posY >= 0)
+          if (y + posY >= 0 && !newboard[y + posY][x + posX].occupied)
             newboard[y + posY][x + posX][operation] = operationValue;
         }
       }
@@ -67,7 +67,6 @@ export const newBoard = ({
 }) => {
   const newboard = [...board];
   const oldPlayer = oldPlayerRef.current;
-  let numberOfLinesCleared = 0;
   if (oldPlayer) {
     if (oldPlayer.collided) {
       boardHelper({
@@ -76,6 +75,7 @@ export const newBoard = ({
         operation: "occupied",
         operationValue: true,
       });
+      let numberOfLinesCleared = 0;
       const posY = oldPlayer.position.y;
       let startPosy = posY;
       let endPosy = posY + 3;
@@ -146,19 +146,16 @@ export const newBoard = ({
       });
     }
   }
-  if (player) {
-    const ghost = { ...player };
-    ghost.position = { ...player.position };
-    ghost.position.y = dropPosition({ board: newboard, player: ghost });
-    ghost.position.x = player.position.x;
-    console.log(ghost.position.y);
-    boardHelper({
-      newboard,
-      player: ghost,
-      operation: "color",
-      operationValue: "rgba(255,255,255,0.7)",
-    });
-  }
+  const ghost = { ...player };
+  ghost.position = { ...player.position };
+  ghost.position.y = dropPosition({ board: newboard, player: ghost });
+  ghost.position.x = player.position.x;
+  boardHelper({
+    newboard,
+    player: ghost,
+    operation: "color",
+    operationValue: "rgba(255,255,255,0.7)",
+  });
   boardHelper({
     newboard,
     player,
