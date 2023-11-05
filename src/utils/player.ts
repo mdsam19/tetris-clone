@@ -35,13 +35,18 @@ export const dropPosition = ({
         const boardY = ver + y;
         const boardX = x + pos.x;
         if (block && board[boardY][boardX].occupied) return ver - 1;
-        else if (block && boardY === board.length - 1) return ver;
+      }
+    }
+    for (let y = 0; y < shape.length; y++) {
+      for (let x = 0; x < shape[0].length; x++) {
+        const block = shape[y][x];
+        const boardY = ver + y;
+        if (block && boardY >= board.length - 1) return ver;
       }
     }
   }
   return pos.y;
 };
-
 export const dropPlayer = ({
   currentPlayer,
   setCurrentPlayer,
@@ -188,7 +193,6 @@ export const attemptMove = ({
   setGameOver: React.Dispatch<React.SetStateAction<boolean>>;
   setDropTime: React.Dispatch<React.SetStateAction<number | null>>;
   boardpx: { x: number; y: number };
-  swipeDownRef: React.MutableRefObject<number>;
 }) => {
   const difX = posX - touchPositionRef.current.x;
   const difY = posY - touchPositionRef.current.y;
@@ -233,6 +237,5 @@ export const attemptMove = ({
       setGameOver,
       setDropTime,
     });
-  } else if (difY >= dy * 4) {
   }
 };

@@ -40,13 +40,11 @@ const Board = ({
   const rotateTimeRef = useRef(0);
   const touchPositionRef = useRef({ x: 0, y: 0 });
   const boardRef = useRef<HTMLDivElement>(null);
-  const swipeDownRef = useRef(0);
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     timeRef.current = Date.now();
     touchPositionRef.current.x = e.targetTouches[0].clientX;
     touchPositionRef.current.y = e.targetTouches[0].clientY;
-    swipeDownRef.current = Date.now();
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -68,7 +66,6 @@ const Board = ({
         setGameOver,
         setDropTime,
         boardpx: boardpx.current,
-        swipeDownRef,
       });
     }
   };
